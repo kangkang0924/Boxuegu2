@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_adBanner"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="#eeeeee">
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/vp_advertBanner"
+        android:background="@drawable/default_img"
+        android:gravity="center"
+        android:layout_marginBottom="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true">
+    </android.support.v4.view.ViewPager>
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/transparent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <cn.edu.gdmec.android.boxuegu.view.ViewPagerIndicator
+                android:layout_width="0dp"
+                android:id="@+id/vpi_advert_indict"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:padding="4dp">
+
+            </cn.edu.gdmec.android.boxuegu.view.ViewPagerIndicator>
+
+        </LinearLayout>
+
+
+</RelativeLayout>

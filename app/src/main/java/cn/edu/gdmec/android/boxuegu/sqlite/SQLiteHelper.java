@@ -14,6 +14,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static String DB_NAME = "bxg.db";
     public static final String U_USERINFO = "userinfo";//个人资料
     public static final String U_VIDEO_PLAY_LIST = "videoplaylist";//视频播放列表
+    public static final String U_COURSE_LIST = "courselist";//课程列表
     public SQLiteHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -26,6 +27,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 + "userName VARCHAR, " //用户名
                 + "nickName VARCHAR, " //昵称
                 + "sex VARCHAR, "       //性别
+                + "userType , "  //
                 + "signature VARCHAR"  //签名
                 + ")");
         //        创建视频播放记录表
@@ -38,6 +40,15 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 + "title VARCHAR,"//视频章节名称
                 + "secondTitle VARCHAR"//视频名单
                 + ")");
+        db.execSQL("CREATE TABLE  IF NOT EXISTS " + U_COURSE_LIST + "( "
+                + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "userName VARCHAR, " //用户名
+                + "chapterId INT, " //章节
+                + "courseId INT, " //课程id
+                + "videoId int"       //小节id
+                + ")");
+
+
     }
 
     //当数据库版本号增加时才会调用此方法
@@ -45,6 +56,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + U_USERINFO);
         db.execSQL("DROP TABLE IF EXISTS " + U_VIDEO_PLAY_LIST);
+        db.execSQL("DROP TABLE IF EXISTS " + U_COURSE_LIST);
         onCreate(db);
 
 

@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import cn.edu.gdmec.android.boxuegu.R;
-
+/**
+ * Created by Jack on 2022/11/16.搞定
+ */
 public class AdBannerFragment extends Fragment {
 
     private String ab;//广告

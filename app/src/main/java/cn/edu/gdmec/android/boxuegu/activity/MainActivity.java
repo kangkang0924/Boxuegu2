@@ -20,9 +20,9 @@ import cn.edu.gdmec.android.boxuegu.R;
 import cn.edu.gdmec.android.boxuegu.view.CourseView;
 import cn.edu.gdmec.android.boxuegu.view.ExercisesView;
 import cn.edu.gdmec.android.boxuegu.view.MyInfoView;
-
 /**
- * Created by Jack on 2018/3/6.
+ * Created by Jack on 2022/11/16.搞定
+ * 主界面
  */
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{

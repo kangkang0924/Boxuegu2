@@ -24,9 +24,8 @@ import cn.edu.gdmec.android.boxuegu.activity.UserInfoActivity;
 import cn.edu.gdmec.android.boxuegu.utils.AnalysisUtils;
 
 /**
- * Created by Jack on 2018/3/7.
+ * Created by Jack on 2022/11/16.搞定
  */
-
 
 public class MyInfoView {
     private ImageView iv_head_icon;

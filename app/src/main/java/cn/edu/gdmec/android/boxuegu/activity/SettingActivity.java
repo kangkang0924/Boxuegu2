@@ -14,7 +14,8 @@ import android.widget.Toast;
 import cn.edu.gdmec.android.boxuegu.R;
 
 /**
- * Created by Jack on 2018/3/7.
+ * Created by Jack on 2022/11/16.搞定
+ * 设置
  */
 
 public class SettingActivity extends AppCompatActivity {

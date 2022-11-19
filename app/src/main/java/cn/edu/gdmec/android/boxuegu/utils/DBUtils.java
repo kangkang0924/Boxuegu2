@@ -13,7 +13,7 @@ import cn.edu.gdmec.android.boxuegu.bean.VideoBean;
 import cn.edu.gdmec.android.boxuegu.sqlite.SQLiteHelper;
 
 /**
- * Created by Jack on 2018/3/7.
+ * Created by Jack on 2022/11/16.搞定
  */
 
 

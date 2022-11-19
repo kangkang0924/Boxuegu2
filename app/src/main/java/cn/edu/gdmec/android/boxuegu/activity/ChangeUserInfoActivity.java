@@ -18,7 +18,8 @@ import android.widget.Toast;
 import cn.edu.gdmec.android.boxuegu.R;
 
 /**
- * Created by Jack on 2018/3/7.搞定
+ * Created by Jack on 2022/11/16.搞定
+ * 更改用户信息Activity
  */
 
 public class ChangeUserInfoActivity extends AppCompatActivity {

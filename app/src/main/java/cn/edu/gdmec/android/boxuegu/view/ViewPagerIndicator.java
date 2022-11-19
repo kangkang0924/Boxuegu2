@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import cn.edu.gdmec.android.boxuegu.R;
 
 /**
- * Created by Jack on 2018/3/7.
+ * Created by Jack on 2022/11/16.搞定
  */
 
 
@@ -20,7 +20,7 @@ public class ViewPagerIndicator extends LinearLayout {
     private Context context;
 
     public ViewPagerIndicator(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public ViewPagerIndicator(Context context, AttributeSet attrs) {
@@ -28,25 +28,26 @@ public class ViewPagerIndicator extends LinearLayout {
         this.context = context;
         setGravity(Gravity.CENTER);
     }
-    public void setCurrentPosition(int currentIndex){
+
+    public void setCurrentPosition(int currentIndex) {
         mIndex = currentIndex;
         removeAllViews();
         int pex = 5;//内边距
-        for (int i=0;i<mCount;i++){
+        for (int i = 0; i < mCount; i++) {
             ImageView imageView = new ImageView(context);
-            if (mIndex == i){
+            if (mIndex == i) {
                 //蓝色为选中
                 imageView.setImageResource(R.drawable.indicator_on);
-            }else {
+            } else {
                 //灰色图片
                 imageView.setImageResource(R.drawable.indicator_off);
             }
-            imageView.setPadding(pex,0,pex,0);
+            imageView.setPadding(pex, 0, pex, 0);
             addView(imageView);
         }
     }
 
-    public void setCount(int count){
+    public void setCount(int count) {
         this.mCount = count;
     }
 }

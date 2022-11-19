@@ -89,7 +89,5 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="找回密码"/>
-
     </LinearLayout>
-
 </LinearLayout>

@@ -18,7 +18,8 @@ import cn.edu.gdmec.android.boxuegu.R;
 import cn.edu.gdmec.android.boxuegu.utils.MD5Utils;
 
 /**
- * Created by Jack on 2018/3/7.
+ * Created by Jack on 2022/11/16.搞定
+ * 注册
  */
 
 public class RegisterActivity extends AppCompatActivity {
@@ -57,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
         et_user_name = (EditText) findViewById(R.id.et_username);
         et_psw = (EditText) findViewById(R.id.et_pwd);
         et_psw_again = (EditText) findViewById(R.id.et_pwd_again);
-        tv_back.setOnClickListener(new View.OnClickListener(){
+        tv_back.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -69,29 +70,24 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //获取输入在响应控件中的字符串
                 getEditString();
-                if (TextUtils.isEmpty(userName)){
-                    Toast.makeText(RegisterActivity.this,"请输入用户名",Toast.LENGTH_SHORT).show();
-                    return;
-                }else if (TextUtils.isEmpty(psw)){
-                    Toast.makeText(RegisterActivity.this,"请输入密码",Toast.LENGTH_SHORT).show();
-                    return;
-                }else if (TextUtils.isEmpty(pswAgain)){
-                    Toast.makeText(RegisterActivity.this,"请再次输入密码",Toast.LENGTH_SHORT).show();
-                    return;
-                }else if(!psw.equals(pswAgain)){
-                    Toast.makeText(RegisterActivity.this,"两次的密码不一样",Toast.LENGTH_SHORT).show();
-                    return;
-                }else if (isExistUserName(userName)){
-                    Toast.makeText(RegisterActivity.this,"此账户已经存在",Toast.LENGTH_SHORT).show();
-                    return;
-                }else {
-                    Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(userName)) {
+                    Toast.makeText(RegisterActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(psw)) {
+                    Toast.makeText(RegisterActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(pswAgain)) {
+                    Toast.makeText(RegisterActivity.this, "请再次输入密码", Toast.LENGTH_SHORT).show();
+                } else if (!psw.equals(pswAgain)) {
+                    Toast.makeText(RegisterActivity.this, "两次的密码不一样", Toast.LENGTH_SHORT).show();
+                } else if (isExistUserName(userName)) {
+                    Toast.makeText(RegisterActivity.this, "此账户已经存在", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(RegisterActivity.this, "注册成  功", Toast.LENGTH_SHORT).show();
                     //把用户名和密码保存到sharedpreference连
-                    saveRegisterInfo(userName,psw);
+                    saveRegisterInfo(userName, psw);
                     //注册成功后把用户名传递到loginActivity.java中
                     Intent data = new Intent();
-                    data.putExtra("userName",userName);
-                    setResult(RESULT_OK,data);
+                    data.putExtra("userName", userName);
+                    setResult(RESULT_OK, data);
                     RegisterActivity.this.finish();
                 }
             }
@@ -101,19 +97,20 @@ public class RegisterActivity extends AppCompatActivity {
     private void saveRegisterInfo(String userName, String psw) {
         String md5Psw = MD5Utils.md5(psw);//把密码用md5加密
         //loginInfo是sp的文件名
-        SharedPreferences sp = getSharedPreferences("loginInfo",MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();//获取sp的编辑器
         //userName作为key，密码作为value
-        editor.putString(userName,md5Psw);
-        editor.commit();//提交修改
+        editor.putString(userName, md5Psw);
+        editor.commit();
+        //提交修改
     }
 
     //从sharepreferences中读取输入的用户名，判断sharepreferences中是否有此用户名
     private boolean isExistUserName(String userName) {
         boolean has_userName = false;
-        SharedPreferences sp = getSharedPreferences("loginInfo",MODE_PRIVATE);
-        String spPsw = sp.getString(userName,"");
-        if (!TextUtils.isEmpty(spPsw)){
+        SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
+        String spPsw = sp.getString(userName, "");
+        if (!TextUtils.isEmpty(spPsw)) {
             has_userName = true;
         }
         return has_userName;

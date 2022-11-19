@@ -16,7 +16,8 @@ import cn.edu.gdmec.android.boxuegu.R;
 import cn.edu.gdmec.android.boxuegu.utils.MD5Utils;
 
 /**
- * Created by Jack on 2018/3/7.
+ * Created by Jack on 2022/11/16.搞定
+ * 登录Activity
  */
 
 public class LoginActivity extends AppCompatActivity {
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText et_psw;
     private String username;
     private String psw;
+    private String userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         init();
     }
+
     //获取页面控件
     private void init() {
         tv_main_title = (TextView) findViewById(R.id.tv_main_title);
@@ -59,8 +62,8 @@ public class LoginActivity extends AppCompatActivity {
         tv_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivityForResult(intent,1);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivityForResult(intent, 1);
             }
         });
         //        立即找回密码的点击事件
@@ -68,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //跳转到找回密码页面
-                Intent intent = new Intent(LoginActivity.this,FindPswActivity.class);
+                Intent intent = new Intent(LoginActivity.this, FindPswActivity.class);
                 startActivity(intent);
             }
         });
@@ -83,24 +86,20 @@ public class LoginActivity extends AppCompatActivity {
                 String spPsw = readPsw(username);
                 if (TextUtils.isEmpty(username)) {
                     Toast.makeText(LoginActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
-                    return;
                 } else if (TextUtils.isEmpty(psw)) {
                     Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
-                    return;
                 } else if (md5Psw.equals(spPsw)) {
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                     //保存登录状态和登录用户名
                     saveLoginStatus(true, username);
                     Intent data = new Intent();
-                    data.putExtra("isLogin",true);
-                    setResult(RESULT_OK,data);
+                    data.putExtra("isLogin", true);
+                    setResult(RESULT_OK, data);
                     LoginActivity.this.finish();
                     //跳到主页
-                    return;
                 } else if (!TextUtils.isEmpty(psw) && !md5Psw.equals(spPsw)) {
                     Toast.makeText(LoginActivity.this, "用户名和密码不一致", Toast.LENGTH_SHORT).show();
-                    return;
-                }else{
+                } else {
                     Toast.makeText(LoginActivity.this, "此用户不存在", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -110,26 +109,26 @@ public class LoginActivity extends AppCompatActivity {
 
     private void saveLoginStatus(boolean status, String username) {
         //loginInfo表示文件名
-        SharedPreferences sp = getSharedPreferences("loginInfo",MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();//获取编辑器
-        editor.putBoolean("isLogin",status);//存入boolean类型的登录状态
-        editor.putString("loginUserName",username);//存入登录时的用户名
+        editor.putBoolean("isLogin", status);//存入boolean类型的登录状态
+        editor.putString("loginUserName", username);//存入登录时的用户名
         editor.commit();//提交修改
 
     }
 
     private String readPsw(String username) {
-        SharedPreferences sp = getSharedPreferences("loginInfo",MODE_PRIVATE);
-        return sp.getString(username,"");
+        SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
+        return sp.getString(username, "");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (data != null){
+        if (data != null) {
             //从注册界面传递过来的用户名
             String userName = data.getStringExtra("userName");
-            if (!TextUtils.isEmpty(userName)){
+            if (!TextUtils.isEmpty(userName)) {
                 et_user_name.setText(userName);
                 //设置光标位置
                 et_user_name.setSelection(userName.length());

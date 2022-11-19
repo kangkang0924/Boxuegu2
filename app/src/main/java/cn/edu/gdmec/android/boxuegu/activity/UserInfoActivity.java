@@ -32,7 +32,8 @@ import cn.edu.gdmec.android.boxuegu.utils.AnalysisUtils;
 import cn.edu.gdmec.android.boxuegu.utils.DBUtils;
 
 /**
- * Created by Jack on 2018/3/7.
+ * Created by Jack on 2022/11/16.搞定
+ * 用户信息修改
  */
 
 

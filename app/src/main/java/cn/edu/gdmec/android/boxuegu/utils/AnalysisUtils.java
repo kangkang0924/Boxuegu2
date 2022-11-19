@@ -15,7 +15,7 @@ import cn.edu.gdmec.android.boxuegu.bean.CourseBean;
 import cn.edu.gdmec.android.boxuegu.bean.ExercisesBean;
 
 /**
- * Created by Jack on 2018/3/6.
+ * Created by Jack on 2022/11/16.搞定
  */
 
 public class AnalysisUtils {

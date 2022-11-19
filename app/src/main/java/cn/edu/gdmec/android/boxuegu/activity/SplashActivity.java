@@ -14,7 +14,8 @@ import java.util.TimerTask;
 import cn.edu.gdmec.android.boxuegu.R;
 
 /**
- * Created by Jack on 2018/3/6.
+ * Created by Jack on 2022/11/16.搞定
+ * 启动
  */
 
 public class SplashActivity  extends AppCompatActivity {
